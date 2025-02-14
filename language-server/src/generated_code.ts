@@ -73,7 +73,7 @@ export function ProcessScriptTypeGeneratedCode(dbtype : typedb.DBType, asmodule 
     if (dbtype.isEvent || dbtype.isDelegate)
         AddGeneratedCodeForDelegate(dbtype, asmodule);
 
-    if (dbtype.macroSpecifiers && dbtype.macroSpecifiers.has("NutClass"))
+    if (!dbtype.macroSpecifiers || !dbtype.macroSpecifiers.has("NonNutClass"))
     {
         let decl = new typedb.DBNamespaceDeclaration;
         decl.declaredModule = dbtype.declaredModule;
